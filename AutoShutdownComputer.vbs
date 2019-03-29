@@ -12,7 +12,7 @@ Sub Include(strFileName)
 	Set objTextFile = Nothing
 End Sub
 
-Include("TaskScheduleXmlHelper.vbs")
+Include("TaskScheduleHelper.vbs")
 
 objRegEx.Global = True
 objRegEx.Pattern = "(\d{2}):(\d{2}):(\d{2})"

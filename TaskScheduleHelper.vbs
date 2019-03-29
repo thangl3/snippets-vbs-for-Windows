@@ -98,3 +98,22 @@ Function generateActionXml(Command, Arguments, NS)
 
 	Set generateActionXml = Actions
 End Function
+
+Function generateInputBoxForAction()
+	Dim stringEvent, stringCommand
+
+	stringEvent = InputBox("Enter the name of event (required)", "Input box")
+	stringCommand = InputBox("Enter the command (required)", "Input box")
+
+	If stringEvent = "" Then
+		MsgBox "Please enter the event name", 0, "Error"
+
+		Wscript.Quit
+	ElseIf stringCommand = "" Then
+		MsgBox "Please enter the command", 0, "Error"
+
+		Wscript.Quit
+	End If
+
+	generateInputBoxForAction = Array(stringEvent, stringCommand)
+End Function
