@@ -98,7 +98,6 @@ End Function
 
 Sub runProgram(processName, cmd, intStyle, isWait, isDisplayMsg)
     If isProcessRunning ( ".", processName ) = False Then
-        Dim objShell
         Set objShell = WScript.CreateObject( "WScript.Shell" )
         objShell.Run cmd, intStyle, isWait
 
@@ -111,7 +110,6 @@ Sub runProgram(processName, cmd, intStyle, isWait, isDisplayMsg)
 End Sub
 
 Sub shell(cmd, intStyle, isWait)
-    Dim objShell
     Set objShell = WScript.CreateObject( "WScript.Shell" )
 
     objShell.Run cmd, intStyle, isWait

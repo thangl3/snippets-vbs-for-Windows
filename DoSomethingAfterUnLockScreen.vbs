@@ -32,11 +32,15 @@ If stringCommand <> "" Then
 		xmlDoc.appendChild(rootElement)
 
 			Set triggerElement = xmlDoc.createNode(1, "Triggers", NS)
-				Set logonTriggerElement = xmlDoc.createNode(1, "LogonTrigger", NS)
+				Set sessionStateChangedTriggerElement = xmlDoc.createNode(1, "SessionStateChangeTrigger", NS)
 					Set Enabled = xmlDoc.createNode(1, "Enabled", NS)
 					Enabled.text = "true"
-					logonTriggerElement.appendChild(Enabled)
-			triggerElement.appendChild(logonTriggerElement)
+					Set StateChange = xmlDoc.createNode(1, "StateChange", NS)
+					StateChange.text = "SessionUnlock"
+
+					sessionStateChangedTriggerElement.appendChild(Enabled)
+					sessionStateChangedTriggerElement.appendChild(StateChange)
+			triggerElement.appendChild(sessionStateChangedTriggerElement)
 		
 		rootElement.appendChild(triggerElement)
 		rootElement.appendChild(genratePrincipalsXml(NS))
@@ -52,5 +56,5 @@ If stringCommand <> "" Then
 
 	objFile.DeleteFile("config.xml")
 
-	MsgBox "Create auto say I am in", 0, "Success"
+	MsgBox "Create task success", 0, "Success"
 End If
