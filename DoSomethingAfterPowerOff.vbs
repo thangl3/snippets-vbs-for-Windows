@@ -11,7 +11,14 @@ Sub Include(strFileName)
 	Set objTextFile = Nothing
 End Sub
 
-Include("TaskScheduleHelper.vbs")
+Function GetRunningFolderPath
+    GetRunningFolderPath = Replace(WScript.ScriptFullName, WScript.ScriptName, "")
+End Function
+
+Include(GetRunningFolderPath & "/TaskScheduleHelper.vbs")
+Include(GetRunningFolderPath & "/launcher.vbs")
+
+Call runAsAdministrator
 
 Dim stringEvent, stringCommand, stringArgument, action
 
@@ -64,11 +71,9 @@ If stringCommand <> "" Then
 
 	xmlDoc.Save "config.xml"
 
-	objShell.Run "C:\windows\system32\cmd.exe /k SchTasks /CREATE /XML config.xml /TN " & stringEvent
+	objShell.Run "C:\windows\system32\cmd.exe /c SchTasks /CREATE /XML config.xml /TN " & stringEvent, 0, 1
 
 	MsgBox "Create done", 0, "Success"
 
 	objFile.DeleteFile("config.xml")
-
-	
 End If

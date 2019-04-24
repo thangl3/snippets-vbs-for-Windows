@@ -10,12 +10,18 @@ Sub Include( scriptPath )
     Set oStream = Nothing
 End Sub
 
-Include ("launcher.vbs")
+Function GetRunningFolderPath
+    GetRunningFolderPath = Replace(WScript.ScriptFullName, WScript.ScriptName, "")
+End Function
+
+Include(GetRunningFolderPath & "/launcher.vbs")
+
+Call runAsAdministrator
 
 ' Replace your command here
-shell """C:\Program Files (x86)\Google\Chrome\Application\chrome.exe""", 0, True
+shell "C:\windows\system32\cmd.exe /c slack-ooo-personal.cmd say --out --event shutdown", 0, True
 
 ' Actual shutdown command <Do not remove>
-shell "%comspec% /c shutdown -s -t 30", 0, True
+shell "%comspec% /c shutdown -s -t 10", 0, True
 
-MsgBox "Your action was executed, your computer will be shut down after 30s", 0, "Success"
+MsgBox "Your action was executed, your computer will be shut down after 10s", 0, "Success"
