@@ -18,9 +18,9 @@ Function generateSettingXml(NS)
 		Set MultipleInstancesPolicy = xmlDoc.createNode(1, "MultipleInstancesPolicy", NS)
 			MultipleInstancesPolicy.text = "IgnoreNew"
 		Set DisallowStartIfOnBatteries = xmlDoc.createNode(1, "DisallowStartIfOnBatteries", NS)
-			DisallowStartIfOnBatteries.text = "true"
+			DisallowStartIfOnBatteries.text = "false"
 		Set StopIfGoingOnBatteries = xmlDoc.createNode(1, "StopIfGoingOnBatteries", NS)
-			StopIfGoingOnBatteries.text = "true"
+			StopIfGoingOnBatteries.text = "false"
 		Set AllowHardTerminate = xmlDoc.createNode(1, "AllowHardTerminate", NS)
 			AllowHardTerminate.text = "true"
 		Set StartWhenAvailable = xmlDoc.createNode(1, "StartWhenAvailable", NS)
