@@ -15,8 +15,10 @@ End Function
 
 Function generateSettingXml(NS)
 	Set Settings = xmlDoc.createNode(1, "Settings", NS)
+		' IgnoreNew
 		Set MultipleInstancesPolicy = xmlDoc.createNode(1, "MultipleInstancesPolicy", NS)
-			MultipleInstancesPolicy.text = "IgnoreNew"
+			MultipleInstancesPolicy.text = "Parallel"
+
 		Set DisallowStartIfOnBatteries = xmlDoc.createNode(1, "DisallowStartIfOnBatteries", NS)
 			DisallowStartIfOnBatteries.text = "false"
 		Set StopIfGoingOnBatteries = xmlDoc.createNode(1, "StopIfGoingOnBatteries", NS)
